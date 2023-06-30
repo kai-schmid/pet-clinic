@@ -17,10 +17,11 @@ jobs:
         distribution: temurin
         java-version: 11
         cache: maven
-    #### AUFGABE 2: SONAR
-      # hier ist der Platz für die Konfiguration der Sonar Analyse
   
     - name: Compile, build and push
       run: |
-        #### AUFGABE 3 COMPILE, DOCKER BUILD UND PUSH
-          # hier ist Platz für maven package und docker build
+        mvn package
+        docker login -u schmidk -p ${{secrets.DOCKERHUB}}
+        docker -build --tag schmidk/pet-clinic:latest -f Dockerfile .
+        docker push schmidk/pet-clinic:latest
+
