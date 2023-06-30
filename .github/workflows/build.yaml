@@ -22,6 +22,6 @@ jobs:
       run: |
         mvn package
         docker login -u schmidk -p ${{secrets.DOCKERHUB}}
-        docker -build --tag schmidk/pet-clinic:latest -f Dockerfile .
+        docker build --tag schmidk/pet-clinic:latest -f Dockerfile .
         docker push schmidk/pet-clinic:latest
 
